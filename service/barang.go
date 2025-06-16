@@ -8,6 +8,7 @@ import (
 	"project-app-inventaris-cli-faisal/repository"
 	"strconv"
 	"strings"
+	"text/tabwriter"
 )
 
 func ListBarang() {
@@ -112,4 +113,21 @@ func DeleteBarang()  {
 	} else {
 		fmt.Println("Barang berhasil dihapus.")
 	}
+}
+
+func CariBarang(keyword string)  {
+	results := repository.CariBarangByNama(keyword)
+	if len(results) == 0 {
+		fmt.Println("Barang tidak ditemukan")
+		return
+	}
+	writer := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ',0)
+	fmt.Fprintln(writer, "ID\tNama\tKode\tKategori\tUmur (Hari)\tStatus")
+	fmt.Fprintln(writer, "--\t----\t-----\t--------\t------------\t------")
+	for _, b := range results {
+		fmt.Fprintf(writer, "%d\t%s\t%s\t%s\t%d\t%s\n",
+			b.ID, b.NamaBarang, b.KodeBarang, b.NamaKategori, b.UmurHari, b.Status,
+		)
+	}
+	writer.Flush()
 }

@@ -1,7 +1,7 @@
 package model
 
 type Kategori struct {
-	ID        int
-	Nama      string
-	Deskripsi string
+	ID           int
+	NamaKategori string
+	Deskripsi    string
 }

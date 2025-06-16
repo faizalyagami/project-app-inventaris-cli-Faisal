@@ -7,7 +7,7 @@ import (
 
 func GetAllKategori() ([]model.Kategori, error) {
 	db := database.GetDb()
-	rows, err := db.Query("SELECT id, nama FROM kategori")
+	rows, err := db.Query("SELECT id, nama_kategori FROM kategori")
 	if err != nil {
 		return nil, err
 	}
@@ -16,7 +16,7 @@ func GetAllKategori() ([]model.Kategori, error) {
 	var kategoris []model.Kategori
 	for rows.Next() {
 		var k model.Kategori
-		if err := rows.Scan(&k.ID, &k.Nama); err != nil {
+		if err := rows.Scan(&k.ID, &k.NamaKategori); err != nil {
 			return nil, err
 		}
 		kategoris = append(kategoris, k)
@@ -26,20 +26,20 @@ func GetAllKategori() ([]model.Kategori, error) {
 
 func CreateKategori(nama string) error {
 	db := database.GetDb()
-	_, err := db.Exec("INSERT INTO kategori (nama) VALUES ($1)", nama)
+	_, err := db.Exec("INSERT INTO kategori (nama_kategori) VALUES ($1)", nama)
 	return err
 }
 
 func GetKategoriByID(id int) (model.Kategori, error) {
 	db := database.GetDb()
 	var k model.Kategori
-	err := db.QueryRow("SELECT id, nama FROM kategori WHERE id = $1", id).Scan(&k.ID, &k.Nama)
+	err := db.QueryRow("SELECT id, nama_kategori FROM kategori WHERE id = $1", id).Scan(&k.ID, &k.NamaKategori)
 	return k, err
 }
 
 func UpdateKategori(id int, nama string) error {
 	db := database.GetDb()
-	_,err := db.Exec("UPDATE kategori SET nama = $1 WHERE id = $2", nama, id)
+	_,err := db.Exec("UPDATE kategori SET nama_kategori = $1 WHERE id = $2", nama, id)
 	return err
 }
 

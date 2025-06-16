@@ -21,3 +21,7 @@ func UpdateBarang()  {
 func DeleteBarang()  {
 	service.DeleteBarang()
 }
+
+func SearchBarangByNama(keyword string)  {
+	service.CariBarang(keyword)
+}

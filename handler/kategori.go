@@ -16,7 +16,7 @@ func ListKategori() {
 	}
 	fmt.Println("Daftar Kategori:")
 	for _, k := range kategoris {
-		fmt.Printf("- %d: %s\n", k.ID, k.Nama)
+		fmt.Printf("- %d: %s\n", k.ID, k.NamaKategori)
 	}
 }
 
@@ -41,7 +41,7 @@ func DetailKategori()  {
 		fmt.Println("Kategori tidak ditemukan:", err)
 		return
 	}
-	fmt.Printf("ID: %d\nNama: %s\n", kategori.ID, kategori.Nama)
+	fmt.Printf("ID: %d\nNama: %s\n", kategori.ID, kategori.NamaKategori)
 }
 
 func UpdateKategori()  {

@@ -201,4 +201,10 @@ func laporanTotalInvestasi() {
 func laporanPerBarang()      {
 	handler.LaporanPerBarang()
 }
-func searchBarang()          { fmt.Println(">> Cari barang berdasarkan nama") }
+func searchBarang(){ 
+	fmt.Println(">> Cari barang berdasarkan nama")
+	keyword := readInput("Cari barang: ")
+
+	handler.SearchBarangByNama(keyword)
+	promptEnterToContinue()
+}

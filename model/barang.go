@@ -11,3 +11,12 @@ type Barang struct {
 	Harga float64
 	UmurEkonomis int
 }
+
+type BarangWithKategori struct {
+	ID           int
+	NamaBarang   string
+	KodeBarang   string
+	NamaKategori string
+	UmurHari     int
+	Status       string
+}
