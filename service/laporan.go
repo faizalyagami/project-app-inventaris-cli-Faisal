@@ -60,3 +60,7 @@ func TampilkanLaporanPerBarang(idStr string) {
 	// fmt.Fprintf(writer, "%s\t%s\tRp %.2f\tRp %.2f\n", laporan.ID, laporan.Nama, laporan.Investasi, laporan.Depresiasi)
 	// writer.Flush()
 }
+
+func HitungTotalInvestasiDanDepresiasi()  {
+	
+}
